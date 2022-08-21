@@ -29,8 +29,8 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.dev",
-      "longDescription": "",
+      "identifier": "tech.webworker.tauri-app",
+      "longDescription": "long description",
       "macOS": {
         "entitlements": null,
         "exceptionDomain": "",
@@ -48,8 +48,9 @@
       }
     },
     "security": {
-      "csp": null
+      "csp": "default-src 'self'"
     },
+    "macOSPrivateApi": true,
     "updater": {
       "active": false
     },
@@ -58,8 +59,10 @@
         "fullscreen": false,
         "height": 600,
         "resizable": true,
-        "title": "Tauri App",
-        "width": 800
+        "title": "辛宝的 Tauri App",
+        "width": 800,
+        "alwaysOnTop": true,
+        "transparent": true
       }
     ]
   }

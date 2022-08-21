@@ -1,37 +1,42 @@
 <script setup lang="ts">
-import { ref, watchEffect } from 'vue'
-import { useDevicesList, useUserMedia } from '@vueuse/core'
+import { onMounted, ref, watchEffect } from "vue";
+import { useDevicesList, useUserMedia } from "@vueuse/core";
 
-import HelloWorld from './components/HelloWorld.vue'
-
-const videoRef = ref<HTMLVideoElement>()
-
-const currentCamera = ref<string>()
+const currentCamera = ref<string>();
 const { videoInputs: cameras } = useDevicesList({
   requestPermissions: true,
-  onUpdated() {
-    if (!cameras.value.find(i => i.deviceId === currentCamera.value))
-      currentCamera.value = cameras.value[0]?.deviceId
+  constraints: {
+    video: {},
   },
-})
-const video = ref<HTMLVideoElement>()
+  onUpdated() {
+    if (!cameras.value.find((i) => i.deviceId === currentCamera.value))
+      currentCamera.value = cameras.value[0]?.deviceId;
+  },
+});
+const video = ref<HTMLVideoElement>();
 const { stream, enabled } = useUserMedia({
   videoDeviceId: currentCamera,
-})
+});
 watchEffect(() => {
-  if (video.value)
-    video.value.srcObject = stream.value!
-})
-
-
+  if (video.value) video.value.srcObject = stream.value!;
+});
 </script>
 
 <template>
-  <div>
-    <div class="flex flex-col gap-4 text-center">
+  <div id="video-box">
+    <video
+      id="videoMask"
+      ref="video"
+      muted
+      autoplay
+      controls
+      class="h-100 w-auto"
+    />
+  </div>
+  <div class="flex flex-col gap-4 text-center">
     <div>
       <button @click="enabled = !enabled">
-        {{ enabled ? 'Stop' : 'Start' }}
+        {{ enabled ? "Stop" : "Start" }}
       </button>
     </div>
 
@@ -46,24 +51,17 @@ watchEffect(() => {
         {{ camera.label }}
       </div>
     </div>
-    <div>
-      <video ref="video" muted autoplay controls class="h-100 w-auto" />
-    </div>
   </div>
-  </div>
-  <HelloWorld msg="Vite3 + Vue3" />
 </template>
-
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+<style lang="less">
+// 320 * 240
+#video-box {
+  mask-image: url("/round.png");
+  mask-position: center center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  width: 533px;
+  margin: auto;
+  outline: 1px solid red;
 }
 </style>
