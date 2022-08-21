@@ -7,7 +7,7 @@
     "distDir": "../dist"
   },
   "package": {
-    "productName": "tauri-app",
+    "productName": "圆形镜子",
     "version": "0.1.0"
   },
   "tauri": {
@@ -59,7 +59,7 @@
         "fullscreen": false,
         "height": 600,
         "resizable": true,
-        "title": "辛宝的 Tauri App",
+        "title": "辛宝@webworker.tech",
         "width": 800,
         "alwaysOnTop": true,
         "transparent": true
