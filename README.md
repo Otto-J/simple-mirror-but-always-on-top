@@ -1,16 +1,40 @@
-# Vue 3 + TypeScript + Vite
+# mirror
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+这是一个 tauri + vue3 项目。这个应用可以读取摄像头，在页面中展示位一个圆形区域，并且默认启动窗口置顶。
 
-## Recommended IDE Setup
+如果你需要直播露脸，但是没有合适的摄像头窗口置顶软件，可以考虑它。
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+This is a Tauri + VUE3 project. The app reads the camera, displays a circular area in the page, and defaults to the top of the startup window.
 
-## Type Support For `.vue` Imports in TS
+If you need to live stream your face but don't have the right camera window top app, consider it.
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
+## 如何使用？ How to use？
 
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
+```sh
+# 确保安装了 rust 环境
+# Make sure the Rust environment is installed
 
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+pnpm i
+pnpm run tauri dev # 开发预览效果
+pnpm run tauri build # 生成 dmg 安装包
+```
+
+## 注意 PS
+
+只在 MacOS v12.5 下测试了效果。
+需要你自行判断。
+The results were only tested on MacOS V12.5.
+
+I need you to judge for yourself.
+
+## todo
+
+[ ] 补充 github actions 完成 release 发包
+
+[] 图标替换
+
+[] 摄像头区域进一步缩小
+
+[] 完善文档
+
+欢迎 PR
