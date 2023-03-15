@@ -1,7 +1,9 @@
-import { createApp } from 'vue'
-import 'virtual:windi.css'
-import 'virtual:windi-devtools'
-import App from './App.vue'
-import './style.css'
+import { createApp } from "vue";
 
-createApp(App).mount('#app')
+import ArcoVue from "@arco-design/web-vue";
+import App from "./App.vue";
+import "@arco-design/web-vue/dist/arco.css";
+
+const app = createApp(App);
+app.use(ArcoVue);
+app.mount("#app");
